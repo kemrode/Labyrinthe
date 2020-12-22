@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class doorExitPoint : MonoBehaviour
 {
+    public bool CanOpen = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Player")
+        if(other.tag=="Player" && CanOpen==true)
         {
-        Debug.Log(other.name + " est à l'intérieur du trigger");
-
+            GetComponent<Animator>().enabled = true;
         }
     }
 
