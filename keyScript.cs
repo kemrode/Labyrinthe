@@ -9,7 +9,10 @@ public class KeyScript : MonoBehaviour
         if(collision.collider.tag=="Player")
         {
             GameObject.Find("Door2").GetComponent<DoorScript>().CanOpen = true;
-            Destroy(transform.parent.gameObject);
+            GetComponent<AudioSource>().Play();
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            Destroy(transform.parent.gameObject,1f);
         }
     }      
 }
