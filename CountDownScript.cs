@@ -28,7 +28,8 @@ public class CountDownScript : MonoBehaviour
             TxtCountDown.text="TimeLeft :  "+ startCountDown;
         }
 
-        Debug.Log("La mort vous étreint");
+        //Debug.Log("La mort vous étreint");
+        GameObject.Find("Player").GetComponent<playerController>().GameOver();
     }
 
 

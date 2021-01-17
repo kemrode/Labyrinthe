@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 4f, rot = 80f, curSpeed;
+
+    [SerializeField]
+    GameObject ImGameOver;
 
     void FixedUpdate()
     {
@@ -25,5 +29,17 @@ public class playerController : MonoBehaviour
         }*/
         transform.Translate(Vector3.forward * curSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
         
+    }
+
+    public void GameOver()
+    {
+        ImGameOver.SetActive(true);
+        StartCoroutine(LoadMenu());
+    }
+
+    IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Menu");
     }
 }
